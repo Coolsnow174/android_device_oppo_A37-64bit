@@ -74,6 +74,13 @@ DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
 TARGET_INIT_VENDOR_LIB := libinit_A37
 TARGET_RECOVERY_DEVICE_MODULES := libinit_A37
 
+# Offline Charging
+BOARD_CHARGER_DISABLE_INIT_BLANK := true
+BOARD_CHARGER_ENABLE_SUSPEND := true
+
+#DT2W
+TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap_enable"
+
 # Kernel
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_MKBOOTIMG_ARGS += --ramdisk_offset 0x01000000 --tags_offset 0x00000100
@@ -82,7 +89,7 @@ TARGET_KERNEL_SOURCE := kernel/oppo/msm8939
 BOARD_KERNEL_SEPARATED_DT := true
 TARGET_KERNEL_ARCH := arm64
 TARGET_CUSTOM_DTBTOOL := dtbToolOppo
-TARGET_KERNEL_CONFIG := lineageos_a37f_defconfig
+TARGET_KERNEL_CONFIG := a37f_defconfig
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
