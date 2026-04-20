@@ -74,17 +74,32 @@ TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
 TARGET_BOOTANIMATION_HALF_RES := true
 
+# Display
+PRODUCT_PACKAGES += \
+    android.hardware.graphics.allocator@2.0-impl \
+    android.hardware.graphics.allocator@2.0-service \
+    android.hardware.graphics.mapper@2.0-impl-2.1 \
+    android.hardware.graphics.composer@2.1-impl \
+    android.hardware.memtrack@1.0-impl \
+    android.hardware.memtrack@1.0-service \
+    gralloc.msm8916 \
+    hwcomposer.msm8916 \
+    libgenlock \
+    libtinyxml \
+    memtrack.msm8916 \
+    copybit.msm8916
+
 # Camera
 PRODUCT_PACKAGES += \
+    android.hardware.camera.provider@2.4-impl \
+    android.hardware.camera.provider@2.4-service \
+    camera.device@1.0-impl \
     libshim_camera \
     libcamera_shim \
     camera.msm8916 \
-    Snap
-
-PRODUCT_PACKAGES += \
-    android.hardware.camera.provider@2.5-impl \
-    android.hardware.camera.provider@2.5-service \
-    camera.device@1.0-impl 
+    Snap \
+    Camera2 \
+    SnapdragonCamera 
 
 # For android_filesystem_config.h
 PRODUCT_PACKAGES += \
@@ -94,6 +109,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fstab.qcom \
     init.target.rc
+
+#Charger
+PRODUCT_PACKAGES += \
+    chargeonlymode
+include $(LOCAL_PATH)/rootdir/charger/charger.mk
 
 # Keylayout
 PRODUCT_COPY_FILES += \
@@ -135,6 +155,10 @@ PRODUCT_PACKAGES += \
     calmodule.cfg \
     sensors.msm8916
 
+# GPS
+PRODUCT_PACKAGES += \
+    gps.msm8916
+
 # Shipping API level (for CTS backward compatibility)
 PRODUCT_SHIPPING_API_LEVEL := 19
 
@@ -153,6 +177,16 @@ PRODUCT_COPY_FILES += \
     prebuilts/vndk/v28/arm/arch-arm-armv7-a-neon/shared/vndk-core/libprotobuf-cpp-lite.so:$(TARGET_COPY_OUT_VENDOR)/lib/libprotobuf-cpp-lite-v28.so \
     prebuilts/vndk/v28/arm/arch-arm-armv7-a-neon/shared/vndk-core/libprotobuf-cpp-full.so:$(TARGET_COPY_OUT_VENDOR)/lib/libprotobuf-cpp-full-v28.so
         
+#TIMEKEEP
+PRODUCT_PACKAGES += \
+    timekeep \
+    TimeKeep
+
+#FM
+PRODUCT_PACKAGES += \
+    FMRadio \
+    libfmjni 
+
 # USB ID
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.usb.vid=2717 \
